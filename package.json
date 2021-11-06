@@ -1,0 +1,17 @@
+{
+  "name": "lazer-new",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/yeetsquad747/lazer-new.git",
+  "author": "yeetsquad747 <74121237+yeetsquad747@users.noreply.github.com>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "@discordjs/builders": "^0.8.2",
+    "@discordjs/rest": "^0.1.0-canary.0",
+    "chalk": "^4.1.2",
+    "discord-api-types": "^0.24.0",
+    "discord.js": "^13.3.1",
+    "dotenv": "^10.0.0"
+  }
+}
