@@ -1,4 +1,5 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
+const { MessageEmbed } = require("discord.js");
 const fetch = require("node-fetch");
 
 module.exports = {
@@ -9,6 +10,10 @@ module.exports = {
     const data = await fetch("https://zenquotes.io/api/random").then((res) =>
       res.json()
     );
-    interaction.reply(data[0]["q"] + " -" + data[0]["a"]);
+    const embed = new MessageEmbed()
+      .setTitle('Quote')
+      .setColor('BLURPLE')
+      .setDescription(data[0]["q"] + " -" + data[0]["a"])
+    interaction.reply({ embeds: [embed] });
   },
 };

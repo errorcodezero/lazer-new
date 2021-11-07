@@ -1,0 +1,9 @@
+version: '3.4'
+
+services:
+  lazernew:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: production
