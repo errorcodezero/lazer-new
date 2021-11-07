@@ -2,6 +2,7 @@ version: '3.4'
 
 services:
   lazernew:
+    restart: always
     build:
       context: .
       dockerfile: ./Dockerfile
