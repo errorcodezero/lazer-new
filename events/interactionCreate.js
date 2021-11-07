@@ -1,4 +1,4 @@
-const { blueBright } = require("chalk");
+const { blueBright, redBright } = require("chalk");
 module.exports = {
   name: "interactionCreate",
   execute(interaction, client) {
@@ -17,7 +17,7 @@ module.exports = {
     try {
       command.execute(interaction);
     } catch (error) {
-      console.error(error);
+      console.error(redBright(error));
       return interaction.reply({
         content: "There was an error while executing this command!",
         ephemeral: true,
