@@ -11,9 +11,9 @@ module.exports = {
       res.json()
     );
     const embed = new MessageEmbed()
-      .setTitle('Quote')
-      .setColor('BLURPLE')
-      .setDescription(data[0]["q"] + " -" + data[0]["a"])
+      .setTitle("Quote")
+      .setColor("BLURPLE")
+      .setDescription(data[0]["q"] + " -" + data[0]["a"]);
     interaction.reply({ embeds: [embed] });
   },
 };
