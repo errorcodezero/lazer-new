@@ -7,7 +7,7 @@ module.exports = {
     .setName("meme")
     .setDescription("Sends epic memes"),
   async execute(interaction) {
-    const data = await fetch("http://meme-api.herokuapp.com/gimme/").then(
+    const data = await fetch("http://meme-api.herokuapp.com/gimme/memes").then(
       (res) => res.json()
     );
     const embed = new MessageEmbed()
