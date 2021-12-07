@@ -1,17 +1,11 @@
-FROM node:17-alpine
-
-ENV NODE_ENV=production
+FROM node:17
 
 WORKDIR /usr/src/app
 
-COPY ["package.json", "yarn.lock", "npm-shrinkwrap.json*", "./"]
+COPY package*.json .
 
-RUN yarn
+RUN yarn install
 
 COPY . .
 
-RUN chown -R node /usr/src/app
-
-USER node
-
-CMD ["yarn install", "start"]
+CMD ["yarn", "start"]
