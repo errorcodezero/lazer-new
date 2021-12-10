@@ -8,6 +8,9 @@ module.exports = {
       option.setName("text").setDescription("What to say").setRequired(true)
     ),
   async execute(interaction) {
-    interaction.reply(interaction.options.getString("text"));
+    // interaction.reply(interaction.options.getString("text"));
+    interaction.reply(
+      "This command was disabled due to an exploit, we are sorry for the inconvenience :(."
+    );
   },
 };
