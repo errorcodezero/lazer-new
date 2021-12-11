@@ -1,4 +1,5 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
+const { MessageEmbed } = require("discord.js");
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -17,12 +18,18 @@ module.exports = {
         .setRequired(true)
     ),
   async execute(interaction) {
-    interaction.reply(
-      `${interaction.options.getString(
-        "user1"
-      )} :heart: ${interaction.options.getString(
-        "user2"
-      )}\nShip Quality: ${Math.round(Math.random() * 100)}%`
-    );
+    const embed = new MessageEmbed()
+      .setTimestamp()
+      .setTitle("Ship")
+      .setFooter("🚢")
+      .setColor("GOLD")
+      .setDescription(
+        `${interaction.options.getString(
+          "user1"
+        )} :heart: ${interaction.options.getString(
+          "user2"
+        )}\nShipping Percentage: ${Math.round(Math.random() * 100)}`
+      );
+    interaction.reply({ embeds: [embed] });
   },
 };
