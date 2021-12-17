@@ -10,7 +10,7 @@ module.exports = {
       .setTitle("About Me")
       .setColor("GREEN")
       .setDescription(
-        "I was made by a fellow discord user named yeetsquad747. He created me to bring life the servers and fun."
+        "I was made by a fellow discord user named yeetsquad747. He created me to bring life to the servers and fun."
       );
     await interaction.reply({ embeds: [embed] });
   },
