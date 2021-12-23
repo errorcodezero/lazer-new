@@ -53,7 +53,7 @@ module.exports = {
       .setFooter("Get kicked nerd")
       .setTimestamp();
 
-    member.kick({ reason });
+    member.kick(reason);
 
     return interaction.reply({ embeds: [embed] });
   },
