@@ -28,7 +28,7 @@ module.exports = {
           "user1"
         )} :heart: ${interaction.options.getString(
           "user2"
-        )}\nShipping Quality: ${Math.round(Math.random() * 100)}%`
+        )}\nShipping Quality: ${Math.round(Math.random() * 100 + 1)}%`
       );
     interaction.reply({ embeds: [embed] });
   },
