@@ -19,7 +19,7 @@ module.exports = {
     ),
   async execute(interaction) {
     if (!interaction.member.permissions.has("KICK_MEMBERS"))
-      return interaction.followUp({
+      return interaction.reply({
         content: "You do not have enough permissions to use this command.",
         ephemeral: true,
       });
