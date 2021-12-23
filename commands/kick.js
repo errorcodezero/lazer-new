@@ -3,23 +3,23 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName("ban")
-    .setDescription("Allows the admin or owner to ban the member.")
+    .setName("kick")
+    .setDescription("Allows the admin or owner to kick the member.")
     .addUserOption((option) =>
       option
         .setName("user")
-        .setDescription("The person who you want to ban")
+        .setDescription("The person who you want to kick")
         .setRequired(true)
     )
     .addStringOption((option) =>
       option
         .setName("reason")
-        .setDescription("Reason to ban member")
+        .setDescription("Reason to kick member")
         .setRequired(true)
     ),
   async execute(interaction) {
-    if (!interaction.member.permissions.has("BAN_MEMBERS"))
-      return interaction.reply({
+    if (!interaction.member.permissions.has("KICK_MEMBERS"))
+      return interaction.followUp({
         content: "You do not have enough permissions to use this command.",
         ephemeral: true,
       });
@@ -30,29 +30,31 @@ module.exports = {
       (await interaction.guild.members.fetch(user.id).catch((err) => {}));
 
     if (!member)
-      return interaction.reply("I am unable to get details about this member.");
+      return interaction.reply(
+        "Unable to get details related to given member."
+      );
     const reason = interaction.options.getString("reason");
 
-    if (!member.bannable)
-      return interaction.reply("I am unable to ban this member.");
+    if (!member.kickable)
+      return interaction.reply("I am unable to kick this member.");
 
     if (
       interaction.member.roles.highest.position <= member.roles.highest.position
     )
       return interaction.reply(
-        "Given member has a higher or equal role as you so I cannot ban them."
+        "Given that the member has a higher or equal rank as you, I cannot kick them."
       );
 
     const embed = new MessageEmbed()
       .setDescription(
-        `**${member.user.tag}** is banned from the server for \`${reason}\``
+        `**${member.user.tag}** is kicked out from the server for \`${reason}\``
       )
-      .setColor("PURPLE")
-      .setFooter("Get banned nerd")
+      .setColor("BLURPLE")
+      .setFooter("Kick Member")
       .setTimestamp();
 
-    member.ban({ reason });
+    member.kick({ reason });
 
-    interaction.reply({ embeds: [embed] });
+    return interaction.reply({ embeds: [embed] });
   },
 };
