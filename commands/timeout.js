@@ -25,7 +25,7 @@ module.exports = {
         .setRequired(true)
     ),
   async execute(interaction) {
-    if (!interaction.member.permissions.has("KICK_MEMBERS"))
+    if (!interaction.member.permissions.has("MODERATE_MEMBERS"))
       return interaction.reply({
         content: "You do not have enough permissions to use this command.",
       });
