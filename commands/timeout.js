@@ -5,7 +5,9 @@ const { MessageEmbed } = require("discord.js");
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("timeout")
-    .setDescription("Allows the admin or owner to give a member a timeout")
+    .setDescription(
+      "Allows the admin or owner to give a member a timeout(or remove one)"
+    )
     .addUserOption((option) =>
       option
         .setName("user")
