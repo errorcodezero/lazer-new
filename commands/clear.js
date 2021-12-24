@@ -5,7 +5,10 @@ module.exports = {
     .setName("clear")
     .setDescription("Mass-delete up to 99 messages.")
     .addIntegerOption((option) =>
-      option.setName("amount").setDescription("Number of messages to prune")
+      option
+        .setName("amount")
+        .setDescription("Number of messages to prune")
+        .setRequired(true)
     ),
   async execute(interaction) {
     const amount = interaction.options.getInteger("amount");
