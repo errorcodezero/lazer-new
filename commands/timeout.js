@@ -56,9 +56,9 @@ module.exports = {
       .setDescription(
         `**${
           member.user.tag
-        }** is timed out from the server for \`${reason}\` for ${
-          interaction.options.getNumber("time") * 60000
-        } minutes`
+        }** is timed out from the server for \`${reason}\` for ${interaction.options.getNumber(
+          "time"
+        )} minutes`
       )
       .setColor("ORANGE")
       .setFooter("Get timed out nerd")
