@@ -21,7 +21,9 @@ module.exports = {
     .addNumberOption((option) =>
       option
         .setName("time")
-        .setDescription("Amount of minutes for timeout")
+        .setDescription(
+          "Amount of minutes for timeout(set to 0 to remove timeouts)"
+        )
         .setRequired(true)
     ),
   async execute(interaction) {
