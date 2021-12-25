@@ -1,13 +1,10 @@
-// <GuildMember>.timeout(time in seconds, optional reason)
 const { SlashCommandBuilder } = require("@discordjs/builders");
 const { MessageEmbed } = require("discord.js");
 
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("timeout")
-    .setDescription(
-      "Allows the admin or owner to give a member a timeout(or remove one)"
-    )
+    .setDescription("Allows the admin or owner to give a member a timeout")
     .addUserOption((option) =>
       option
         .setName("user")
@@ -23,25 +20,19 @@ module.exports = {
     .addNumberOption((option) =>
       option
         .setName("minutes")
-        .setDescription(
-          "Amount of minutes for timeout(set all units of time to 0 to remove timeout)"
-        )
+        .setDescription("Amount of minutes for timeout")
         .setRequired(true)
     )
     .addNumberOption((option) =>
       option
         .setName("hours")
-        .setDescription(
-          "Amount of minutes for timeout(set all units of time to 0 to remove timeout)"
-        )
+        .setDescription("Amount of minutes for timeout")
         .setRequired(true)
     )
     .addNumberOption((option) =>
       option
         .setName("days")
-        .setDescription(
-          "Amount of days for timeout(set all units of time to 0 to remove timeout)"
-        )
+        .setDescription("Amount of days for timeout")
         .setRequired(true)
     ),
   async execute(interaction) {
@@ -65,7 +56,7 @@ module.exports = {
       interaction.member.roles.highest.position <= member.roles.highest.position
     )
       return interaction.reply(
-        "Given member has a higher or equal role as you so I cannot ban them."
+        "Given member has a higher or equal role as you so I cannot timeout them."
       );
 
     const time =
@@ -75,13 +66,7 @@ module.exports = {
     await member.timeout(time, interaction.options.getString("reason"));
     const embed = new MessageEmbed()
       .setDescription(
-        `**${
-          member.user.tag
-        }** is timed out from the server for \`${reason}\` for ${interaction.options.getNumber(
-          "day(s)"
-        )} days, ${interaction.options.getNumber(
-          "hour(s)"
-        )} hours, ${interaction.options.getNumber("minutes")} minute(s)`
+        `**${member.user.tag}** is timed out from the server for \`${reason}\` `
       )
       .setColor("ORANGE")
       .setFooter("Get timed out nerd")
