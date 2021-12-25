@@ -22,9 +22,25 @@ module.exports = {
     )
     .addNumberOption((option) =>
       option
-        .setName("time")
+        .setName("minutes")
         .setDescription(
-          "Amount of minutes for timeout(set to 0 to remove timeouts)"
+          "Amount of minutes for timeout(set all units of time to 0 to remove timeout)"
+        )
+        .setRequired(true)
+    )
+    .addNumberOption((option) =>
+      option
+        .setName("hours")
+        .setDescription(
+          "Amount of minutes for timeout(set all units of time to 0 to remove timeout)"
+        )
+        .setRequired(true)
+    )
+    .addNumberOption((option) =>
+      option
+        .setName("days")
+        .setDescription(
+          "Amount of days for timeout(set all units of time to 0 to remove timeout)"
         )
         .setRequired(true)
     ),
@@ -52,17 +68,20 @@ module.exports = {
         "Given member has a higher or equal role as you so I cannot ban them."
       );
 
-    await member.timeout(
-      interaction.options.getNumber("time") * 60000,
-      interaction.options.getString("reason")
-    );
+    const time =
+      interaction.options.getNumber("minutes") * 60000 +
+      interaction.options.getNumber("hours") * 3600000 +
+      interaction.options.getNumber("days") * 86400000;
+    await member.timeout(time, interaction.options.getString("reason"));
     const embed = new MessageEmbed()
       .setDescription(
         `**${
           member.user.tag
         }** is timed out from the server for \`${reason}\` for ${interaction.options.getNumber(
-          "time"
-        )} minutes`
+          "day(s)"
+        )} days, ${interaction.options.getNumber(
+          "hour(s)"
+        )} hours, ${interaction.options.getNumber("minutes")} minute(s)`
       )
       .setColor("ORANGE")
       .setFooter("Get timed out nerd")
