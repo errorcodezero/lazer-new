@@ -1,6 +1,7 @@
 const fs = require("fs");
 const { Client, Collection, Intents } = require("discord.js");
-const { token } = require("./config");
+const { token, mongo_db_url } = require("./config");
+const { connect } = require("mongoose");
 
 const client = new Client({
   intents: [Intents.FLAGS.GUILDS],
@@ -32,4 +33,8 @@ for (const file of eventFiles) {
   }
 }
 
+connect(mongo_db_url, {
+  useNewUrlParser: true,
+  useUnifiedTopology: false,
+});
 client.login(token);
