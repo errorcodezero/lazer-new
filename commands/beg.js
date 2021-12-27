@@ -1,5 +1,4 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
-const { findOneAndUpdate } = require("../models/Users.js");
 const UserModel = require("../models/Users.js");
 
 module.exports = {
@@ -8,13 +7,14 @@ module.exports = {
     .setDescription("Beg for some coins"),
   async execute(interaction) {
     const randomNumber = Math.floor(Math.random() * 500) + 1;
-    let user = UserModel.findOneAndUpdate({ user_id: interaction.user.id });
+    let user = await UserModel.findOne({ user_id: interaction.user.id });
     if (!user) {
       user = await UserModel.create({
         user_id: interaction.user.id,
+        balance: randomNumber,
       });
       return interaction.reply(
-        `You seem to be new to this. A wallet has been created for you!`
+        `You begged and received ${randomNumber} coins!`
       );
     } else {
       user = await UserModel.findOneAndUpdate(
