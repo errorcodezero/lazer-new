@@ -2,6 +2,7 @@ version: '3.4'
 
 services:
   lazer:
+    container_name: lazer
     build:
       context: .
       dockerfile: ./Dockerfile
@@ -11,6 +12,7 @@ services:
       - lazer
   mongo:
     image: mongo
+    container_name: lazer_db
     networks: 
       - lazer
     
