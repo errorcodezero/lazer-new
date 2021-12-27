@@ -9,7 +9,7 @@ const Users = Schema({
     type: Number,
     default: 0,
   },
-  bank_balence: {
+  bank_balance: {
     type: Number,
     default: 0,
   },

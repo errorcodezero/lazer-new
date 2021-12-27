@@ -15,12 +15,14 @@ module.exports = {
         user_id: interaction.user.id,
         balance: 0,
       });
-      return interaction.reply("Balance: 0");
+      return interaction.reply("Balance: 0\nBank Balance: 0");
     } else {
       user = await UserModel.findOne({
         user_id: interaction.user.id,
       });
-      return interaction.reply(`Balance: ${user.balance}`);
+      return interaction.reply(
+        `Balance: ${user.balance}\nBank Balance: ${user.bank_balance}`
+      );
     }
   },
 };
