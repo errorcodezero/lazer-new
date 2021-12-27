@@ -9,6 +9,10 @@ const Users = Schema({
     type: Number,
     default: 0,
   },
+  bank_balence: {
+    type: Number,
+    default: 0,
+  },
 });
 
 module.exports = model("Users", Users);

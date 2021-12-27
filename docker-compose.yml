@@ -1,0 +1,19 @@
+version: '3.4'
+
+services:
+  lazer:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: production
+    networks:
+      - lazer
+  mongo:
+    image: mongo
+    networks: 
+      - lazer
+    
+networks:
+  lazer:
+    external: true
