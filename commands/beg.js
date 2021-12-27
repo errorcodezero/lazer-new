@@ -8,35 +8,28 @@ module.exports = {
     .setDescription("Beg for some coins"),
   async execute(interaction) {
     const randomNumber = Math.floor(Math.random() * 500) + 1;
-    // const response = await profileModel.findOneAndUpdate(
-    //     {
-    //       userID: message.author.id,
-    //     },
-    //     {
-    //       $inc: {
-    //         coins: randomNumber,
-    //       },
-    //     }
-    //   );
-
-    // const doc = new UserModel({
-    //   user_id: interaction.user.id,
-    //   $inc: {
-    //     balance: randomNumber,
-    //   },
-    // });
-    // await doc.save();
-
-    const user = await UserModel.findOneAndUpdate(
-      {
+    let user = UserModel.findOneAndUpdate({ user_id: interaction.user.id });
+    if (!user) {
+      user = await UserModel.create({
         user_id: interaction.user.id,
-      },
-      {
-        $inc: {
-          balance: randomNumber,
+      });
+      return interaction.reply(
+        `You seem to be new to this. A wallet has been created for you!`
+      );
+    } else {
+      user = await UserModel.findOneAndUpdate(
+        {
+          user_id: interaction.user.id,
         },
-      }
-    );
-    interaction.reply(`You begged and received ${randomNumber} coins!`);
+        {
+          $inc: {
+            balance: randomNumber,
+          },
+        }
+      );
+      return interaction.reply(
+        `You begged and received ${randomNumber} coins!`
+      );
+    }
   },
 };
