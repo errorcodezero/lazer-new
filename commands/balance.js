@@ -6,7 +6,21 @@ module.exports = {
     .setDescription("See how much money you have"),
 
   async execute(interaction) {
-    const user = await UserModel.findOne({ user_id: interaction.user.id });
-    interaction.reply(`Balance: ${user.balance}`);
+    let user = await UserModel.findOne({
+      user_id: interaction.user.id,
+    });
+
+    if (!user) {
+      user = await UserModel.create({
+        user_id: interaction.user.id,
+        balance: 0,
+      });
+      return interaction.reply("Balance: 0");
+    } else {
+      user = await UserModel.findOne({
+        user_id: interaction.user.id,
+      });
+      return interaction.reply(`Balance: ${user.balance}`);
+    }
   },
 };
