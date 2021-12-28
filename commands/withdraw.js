@@ -13,14 +13,27 @@ module.exports = {
     ),
   async execute(interaction) {
     const amount = interaction.options.getNumber("amount");
+    let user = await UserModel.findOne({ user_id: interaction.user.id });
     if (amount % 1 != 0 || amount <= 0)
       return interaction.reply("Withdraw amount must be a whole number");
     try {
-      if (amount > UserModel.bank)
+      if (!user) {
+        user = UserModel.create({
+          user_id: interaction.user.id,
+          balence: 0,
+          bank_balence: 0,
+        });
+
+        return interaction.reply(
+          "You don't have that amount of coins to withdraw"
+        );
+      }
+
+      if (amount > user.bank_balance || user.bank_balance < 0)
         return interation.reply(
           `You don't have that amount of coins to withdraw`
         );
-      await UserModel.findOneAndUpdate(
+      await UserModel.updateOne(
         {
           user_id: interaction.user.id,
         },

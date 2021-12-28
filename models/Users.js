@@ -8,10 +8,12 @@ const Users = Schema({
   balance: {
     type: Number,
     default: 0,
+    minimum: 0,
   },
   bank_balance: {
     type: Number,
     default: 0,
+    minimum: 0,
   },
 });
 
