@@ -7,6 +7,17 @@ module.exports = {
         `${interaction.user.tag} in #${interaction.channel.name} triggered an interaction.`
       )
     );
+    client.shard
+      .fetchClientValues("guilds.cache.size")
+      .then((results) => {
+        console.log(
+          `${results.reduce(
+            (acc, guildCount) => acc + guildCount,
+            0
+          )} total guilds`
+        );
+      })
+      .catch(console.error);
 
     if (!interaction.isCommand()) return;
 
