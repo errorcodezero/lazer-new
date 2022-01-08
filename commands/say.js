@@ -7,6 +7,7 @@ module.exports = {
     .addStringOption((option) =>
       option.setName("text").setDescription("What to say").setRequired(true)
     ),
+  cooldown: 3,
   async execute(interaction) {
     interaction.reply(interaction.options.getString("text"));
   },

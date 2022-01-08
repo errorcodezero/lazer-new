@@ -8,6 +8,9 @@ const client = new Client({
   allowedMentions: [(parse = [])],
 });
 
+// Cooldowns
+client.cooldowns = new Collection();
+
 // Commands
 client.commands = new Collection();
 const commandFiles = fs

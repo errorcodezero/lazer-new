@@ -4,6 +4,7 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName("balance")
     .setDescription("See how much money you have"),
+  cooldown: 5,
 
   async execute(interaction) {
     let user = await UserModel.findOne({

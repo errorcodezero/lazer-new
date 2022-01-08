@@ -17,6 +17,7 @@ module.exports = {
         .setDescription("Second person to ship")
         .setRequired(true)
     ),
+  cooldown: 4,
   async execute(interaction) {
     const embed = new MessageEmbed()
       .setTimestamp()

@@ -1,4 +1,5 @@
 const { blueBright, redBright } = require("chalk");
+const { Collection } = require("discord.js");
 module.exports = {
   name: "interactionCreate",
   execute(interaction, client) {
@@ -22,15 +23,41 @@ module.exports = {
     if (!interaction.isCommand()) return;
 
     const command = client.commands.get(interaction.commandName);
+    const cooldowns = client.cooldowns;
 
     if (!command) return;
 
+    if (!cooldowns.has(command.name)) {
+      cooldowns.set(command.name, new Collection());
+    }
+
+    const now = Date.now();
+    const timestamps = cooldowns.get(command.name);
+    const cooldownAmount = (command.cooldown || 3) * 1000;
+
+    if (timestamps.has(interaction.user.id)) {
+      const expirationTime =
+        timestamps.get(interaction.user.id) + cooldownAmount;
+
+      if (now < expirationTime) {
+        const timeLeft = (expirationTime - now) / 1000;
+        return interaction.reply(
+          `please wait ${timeLeft.toFixed(
+            1
+          )} more second(s) before reusing this command.`
+        );
+      }
+    }
+
+    timestamps.set(interaction.user.id, now);
+    setTimeout(() => timestamps.delete(interaction.user.id), cooldownAmount);
+
     try {
-      command.execute(interaction);
+      command.execute(interaction, cooldowns, command, client);
     } catch (error) {
-      console.error(redBright(error));
-      return interaction.reply({
-        content: "There was an error while executing this command!",
+      console.error(error);
+      interaction.reply({
+        content: "There was an error while executing this command",
         ephemeral: true,
       });
     }

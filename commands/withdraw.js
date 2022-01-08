@@ -11,6 +11,7 @@ module.exports = {
         .setDescription("Amount of money to withdraw")
         .setRequired(true)
     ),
+  cooldown: 5,
   async execute(interaction) {
     const amount = interaction.options.getNumber("amount");
     let user = await UserModel.findOne({ user_id: interaction.user.id });

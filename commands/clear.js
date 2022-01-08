@@ -10,6 +10,7 @@ module.exports = {
         .setDescription("Number of messages to prune")
         .setRequired(true)
     ),
+  cooldown: 1,
   async execute(interaction) {
     const amount = interaction.options.getInteger("amount");
     if (!interaction.member.permissions.has("MANAGE_MESSAGES")) {

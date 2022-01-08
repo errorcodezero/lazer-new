@@ -13,6 +13,7 @@ module.exports = {
         .setDescription("Amount of money to deposit")
         .setRequired(true)
     ),
+  cooldown: 5,
   async execute(interaction) {
     const amount = interaction.options.getNumber("amount");
     let user = await UserModel.findOne({ user_id: interaction.user.id });

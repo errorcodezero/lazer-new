@@ -5,6 +5,7 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName("about")
     .setDescription("Tells you about the bot"),
+  cooldown: 60,
   async execute(interaction) {
     const embed = new MessageEmbed()
       .setTitle("About Me")

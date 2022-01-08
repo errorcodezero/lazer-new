@@ -6,6 +6,7 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName("meme")
     .setDescription("Sends epic memes"),
+  cooldown: 1,
   async execute(interaction) {
     const data = await fetch("http://meme-api.herokuapp.com/gimme/memes").then(
       (res) => res.json()

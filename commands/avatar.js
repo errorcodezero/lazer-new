@@ -9,6 +9,7 @@ module.exports = {
     .addUserOption((option) =>
       option.setName("target").setDescription("The user's avatar to show")
     ),
+  cooldown: 5,
   async execute(interaction) {
     const user = interaction.options.getUser("target");
     if (user)
