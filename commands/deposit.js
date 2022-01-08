@@ -1,7 +1,5 @@
 const UserModel = require("../models/Users.js");
-const { SlashCommandBuilder, userMention } = require("@discordjs/builders");
-const assert = require("assert");
-const { redBright } = require("chalk");
+const { SlashCommandBuilder } = require("@discordjs/builders");
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -31,7 +29,7 @@ module.exports = {
           "You don't have that amount of coins to deposit"
         );
       }
-      if (amount > user.balance || user.balance < 0)
+      if (amount > user.balance)
         return interaction.reply(
           "You don't have that amount of coins to deposit"
         );

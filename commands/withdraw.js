@@ -30,7 +30,7 @@ module.exports = {
         );
       }
 
-      if (amount > user.bank_balance || user.bank_balance < 0)
+      if (amount > user.bank_balance)
         return interaction.reply(
           `You don't have that amount of coins to withdraw`
         );
