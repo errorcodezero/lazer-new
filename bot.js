@@ -4,19 +4,35 @@ const { token, mongo_db_url, top_gg_token } = require("./config");
 const { connect } = require("mongoose");
 const { magentaBright } = require("chalk");
 const { AutoPoster } = require("topgg-autoposter");
+const CronJob = require("cron").CronJob;
 
 const client = new Client({
   intents: [Intents.FLAGS.GUILDS],
   allowedMentions: [(parse = [])],
 });
 
-const ap = AutoPoster(top_gg_token, client);
-ap.on("posted", () => {
-  console.log(magentaBright("Posted stats to Top.gg!"));
-});
+// const ap = AutoPoster(top_gg_token, client);
+// ap.on("posted", () => {
+//   console.log(magentaBright("Posted stats to Top.gg!"));
+// });
 
 // Cooldowns
 client.cooldowns = new Collection();
+
+// Cron
+const updateStatus = new CronJob("0 * * * * *", function () {
+  client.shard
+    .fetchClientValues("guilds.cache.size")
+    .then((results) => {
+      client.user.setActivity(
+        `${results.reduce((acc, guildCount) => acc + guildCount, 0)} servers`,
+        { type: "WATCHING" }
+      );
+    })
+    .catch(console.error);
+});
+
+updateStatus.start();
 
 // Commands
 client.commands = new Collection();
