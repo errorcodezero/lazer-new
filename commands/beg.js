@@ -5,7 +5,7 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName("beg")
     .setDescription("Beg for some coins"),
-  cooldonw: 30,
+  cooldown: 30,
   async execute(interaction) {
     const randomNumber = Math.floor(Math.random() * 500) + 1;
     let user = await UserModel.findOne({ user_id: interaction.user.id });
