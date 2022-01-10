@@ -1,5 +1,6 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
 const { MessageEmbed } = require("discord.js");
+const randomHex = require('random-hex');
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -23,7 +24,7 @@ module.exports = {
       .setTimestamp()
       .setTitle("Ship")
       .setFooter({ text: "🚢" })
-      .setColor("GOLD")
+      .setColor(randomHex.generate())
       .setDescription(
         `${interaction.options.getString(
           "user1"

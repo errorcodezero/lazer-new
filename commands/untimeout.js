@@ -1,6 +1,7 @@
 // <GuildMember>.timeout(time in seconds, optional reason)
 const { SlashCommandBuilder } = require("@discordjs/builders");
 const { MessageEmbed } = require("discord.js");
+const randomHex = require('random-hex');
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -50,7 +51,7 @@ module.exports = {
       .setDescription(
         `**${member.user.tag}** has had their timeout removed for \`${reason}\``
       )
-      .setColor("PURPLE")
+      .setColor(randomHex.generate())
       .setFooter({ text: "Welcome back to the gang" })
       .setTimestamp();
 
