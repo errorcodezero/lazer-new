@@ -11,26 +11,32 @@ const client = new Client({
   allowedMentions: [(parse = [])],
 });
 
-// const ap = AutoPoster(top_gg_token, client);
-// ap.on("posted", () => {
-//   console.log(magentaBright("Posted stats to Top.gg!"));
-// });
+const ap = AutoPoster(top_gg_token, client);
+ap.on("posted", () => {
+  console.log(magentaBright("Posted stats to Top.gg!"));
+});
 
 // Cooldowns
 client.cooldowns = new Collection();
 
 // Cron
-const updateStatus = new CronJob("0 * * * * *", function () {
-  client.shard
-    .fetchClientValues("guilds.cache.size")
-    .then((results) => {
-      client.user.setActivity(
-        `${results.reduce((acc, guildCount) => acc + guildCount, 0)} servers`,
-        { type: "WATCHING" }
-      );
-    })
-    .catch(console.error);
-});
+const updateStatus = new CronJob(
+  "0 * * * * *",
+  function () {
+    client.shard
+      .fetchClientValues("guilds.cache.size")
+      .then((results) => {
+        client.user.setActivity(
+          `${results.reduce((acc, guildCount) => acc + guildCount, 0)} servers`,
+          { type: "WATCHING" }
+        );
+      })
+      .catch(console.error);
+  },
+  null,
+  true,
+  "America/Los_Angeles"
+);
 
 updateStatus.start();
 
