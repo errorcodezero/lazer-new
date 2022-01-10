@@ -51,7 +51,7 @@ module.exports = {
         `**${member.user.tag}** has had their timeout removed for \`${reason}\``
       )
       .setColor("PURPLE")
-      .setFooter("Welcome back to the gang")
+      .setFooter({ text: "Welcome back to the gang" })
       .setTimestamp();
 
     interaction.reply({ embeds: [embed] });

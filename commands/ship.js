@@ -22,7 +22,7 @@ module.exports = {
     const embed = new MessageEmbed()
       .setTimestamp()
       .setTitle("Ship")
-      .setFooter("🚢")
+      .setFooter({ text: "🚢" })
       .setColor("GOLD")
       .setDescription(
         `${interaction.options.getString(

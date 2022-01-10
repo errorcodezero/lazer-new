@@ -47,7 +47,7 @@ module.exports = {
         `**${member.user.tag}** is banned from the server for \`${reason}\``
       )
       .setColor("PURPLE")
-      .setFooter("Get banned nerd")
+      .setFooter({ text: "Get banned nerd" })
       .setTimestamp();
 
     member.ban({ reason });

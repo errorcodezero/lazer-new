@@ -49,7 +49,7 @@ module.exports = {
         `**${member.user.tag}** is kicked out from the server for \`${reason}\``
       )
       .setColor("BLURPLE")
-      .setFooter("Get kicked nerd")
+      .setFooter({ text: "Get kicked nerd" })
       .setTimestamp();
 
     member.kick(reason);
