@@ -20,17 +20,23 @@ ap.on("posted", () => {
 client.cooldowns = new Collection();
 
 // Cron
-const updateStatus = new CronJob("0 * * * * *", function () {
-  client.shard
-    .fetchClientValues("guilds.cache.size")
-    .then((results) => {
-      client.user.setActivity(
-        `${results.reduce((acc, guildCount) => acc + guildCount, 0)} servers`,
-        { type: "WATCHING" }
-      );
-    })
-    .catch(console.error);
-});
+const updateStatus = new CronJob(
+  "0 * * * * *",
+  function () {
+    client.shard
+      .fetchClientValues("guilds.cache.size")
+      .then((results) => {
+        client.user.setActivity(
+          `${results.reduce((acc, guildCount) => acc + guildCount, 0)} servers`,
+          { type: "WATCHING" }
+        );
+      })
+      .catch(console.error);
+  },
+  null,
+  true,
+  "America/Los_Angeles"
+);
 
 updateStatus.start();
 
