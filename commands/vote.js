@@ -13,7 +13,7 @@ module.exports = {
         .setURL(`https://top.gg/bot/${client_id}`)
     );
 
-    const embed = new MessageEmbed().setTitle("Vote for me").setColor(randomHex.generate()),;
+    const embed = new MessageEmbed().setTitle("Vote for me").setColor(randomHex.generate());
 
     await interaction.reply({
       embeds: [embed],
