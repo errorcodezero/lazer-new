@@ -1,5 +1,6 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
 const { MessageEmbed } = require("discord.js");
+const randomHex = require('random-hex');
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -68,8 +69,8 @@ module.exports = {
       .setDescription(
         `**${member.user.tag}** is timed out from the server for \`${reason}\` `
       )
-      .setColor("ORANGE")
-      .setFooter("Get timed out nerd")
+      .setColor(randomHex.generate())
+      .setFooter({ text: "Get timed out nerd" })
       .setTimestamp();
 
     interaction.reply({ embeds: [embed] });

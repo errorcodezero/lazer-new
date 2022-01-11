@@ -1,5 +1,6 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
 const { MessageEmbed } = require("discord.js");
+const randomHex = require('random-hex');
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -46,8 +47,8 @@ module.exports = {
       .setDescription(
         `**${member.user.tag}** is banned from the server for \`${reason}\``
       )
-      .setColor("PURPLE")
-      .setFooter("Get banned nerd")
+      .setColor(randomHex.generate())
+      .setFooter({ text: "Get banned nerd" })
       .setTimestamp();
 
     member.ban({ reason });
