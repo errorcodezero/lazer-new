@@ -1,4 +1,3 @@
-const { whiteBright } = require('chalk');
 const { ShardingManager } = require('discord.js');
 const config = require('./config');
 
