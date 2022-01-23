@@ -5,7 +5,7 @@ const DIG = require("discord-image-generation");
 module.exports = {
     data: new SlashCommandBuilder()
         .setName("trash")
-        .setDescription("See what someone truely is")
+        .setDescription("See what someone truly is")
         .addUserOption((option) =>
             option
                 .setName("user")
