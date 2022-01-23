@@ -1,12 +1,9 @@
-const { blueBright, redBright } = require("chalk");
 const { Collection } = require("discord.js");
 module.exports = {
   name: "interactionCreate",
   execute(interaction, client) {
     console.log(
-      blueBright(
-        `${interaction.user.tag} in #${interaction.channel.name} triggered an interaction.`
-      )
+      `${interaction.user.tag} in #${interaction.channel.name} triggered an interaction.`
     );
     client.shard
       .fetchClientValues("guilds.cache.size")

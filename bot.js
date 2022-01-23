@@ -2,7 +2,6 @@ const fs = require("fs");
 const { Client, Collection, Intents } = require("discord.js");
 const { token, mongo_db_url, top_gg_token } = require("./config");
 const { connect } = require("mongoose");
-const { magentaBright } = require("chalk");
 const { AutoPoster } = require("topgg-autoposter");
 const CronJob = require("cron").CronJob;
 
@@ -11,10 +10,10 @@ const client = new Client({
   allowedMentions: [(parse = [])],
 });
 
-const ap = AutoPoster(top_gg_token, client);
-ap.on("posted", () => {
-  console.log(magentaBright("Posted stats to Top.gg!"));
-});
+// const ap = AutoPoster(top_gg_token, client);
+// ap.on("posted", () => {
+//   console.log("Posted stats to Top.gg!");
+// });
 
 // Cooldowns
 client.cooldowns = new Collection();
