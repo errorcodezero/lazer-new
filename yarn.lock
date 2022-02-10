@@ -509,9 +509,9 @@ discord-api-types@^0.26.0, discord-api-types@^0.26.1:
   version "0.26.1"
   resolved "https://registry.yarnpkg.com/discord-api-types/-/discord-api-types-0.26.1.tgz#726f766ddc37d60da95740991d22cb6ef2ed787b"
 
-discord-image-generation@^1.4.9:
-  version "1.4.9"
-  resolved "https://registry.yarnpkg.com/discord-image-generation/-/discord-image-generation-1.4.9.tgz#46d7dc187517c78221908826fbb6322d3d891838"
+discord-image-generation@^1.4.12:
+  version "1.4.12"
+  resolved "https://registry.yarnpkg.com/discord-image-generation/-/discord-image-generation-1.4.12.tgz#f39a1156984879435b5c0ea2bbf3fa56dacfff33"
   dependencies:
     canvas "^2.6.1"
     gifencoder "^2.0.1"
@@ -812,7 +812,7 @@ mongodb@4.3.1:
   optionalDependencies:
     saslprep "^1.0.3"
 
-mongoose@^6.2.1:
+mongoose@^6.1.7:
   version "6.2.1"
   resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-6.2.1.tgz#5791f46336f785080259c007ec16ad42e606e2ee"
   dependencies:
