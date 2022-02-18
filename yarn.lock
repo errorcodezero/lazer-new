@@ -513,6 +513,10 @@ discord-api-types@^0.26.0, discord-api-types@^0.26.1:
   version "0.26.1"
   resolved "https://registry.yarnpkg.com/discord-api-types/-/discord-api-types-0.26.1.tgz#726f766ddc37d60da95740991d22cb6ef2ed787b"
 
+discord-api-types@^0.27.2:
+  version "0.27.2"
+  resolved "https://registry.yarnpkg.com/discord-api-types/-/discord-api-types-0.27.2.tgz#a9d3cbce6af41786e0b1abee02c90702be60b08b"
+
 discord-image-generation@^1.4.12:
   version "1.4.12"
   resolved "https://registry.yarnpkg.com/discord-image-generation/-/discord-image-generation-1.4.12.tgz#f39a1156984879435b5c0ea2bbf3fa56dacfff33"
