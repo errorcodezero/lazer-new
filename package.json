@@ -14,7 +14,7 @@
     "discord-api-types": "^0.32.1",
     "discord-image-generation": "^1.4.13",
     "discord.js": "^13.6.0",
-    "dotenv": "^16.0.0",
+    "dotenv": "^16.0.1",
     "mongoose": "^6.3.8",
     "random-hex": "^1.0.2",
     "topgg-autoposter": "^2.0.1"
